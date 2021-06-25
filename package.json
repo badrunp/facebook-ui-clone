@@ -1,0 +1,32 @@
+{
+  "name": "facebook-ui-clone",
+  "version": "1.0.0",
+  "description": "facebook ui clone for learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss -i ./css/tailwind.css -c ./tailwind.config.js -o ./css/app.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badrunp/facebook-ui-clone.git"
+  },
+  "keywords": [
+    "tailwindcss",
+    "css",
+    "html",
+    "ui",
+    "frontend"
+  ],
+  "author": "Muhammad Badrun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/badrunp/facebook-ui-clone/issues"
+  },
+  "homepage": "https://github.com/badrunp/facebook-ui-clone#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
+  }
+}
