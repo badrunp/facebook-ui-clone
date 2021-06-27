@@ -1,13 +1,1081 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facebook ui clone</title>
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="./images/logo/facebook-logo.png" type="image/x-icon">
+
+    <!-- Tailwind css -->
     <link rel="stylesheet" href="./css/app.css">
+
+    <!-- Box icon -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        /* width */
+        .main::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        /* Track */
+        .main::-webkit-scrollbar-track {
+            border-radius: 12px;
+        }
+
+        /* Handle */
+        .main::-webkit-scrollbar-thumb {
+            background: transparent;
+            border-radius: 10px;
+        }
+
+        .main:hover::-webkit-scrollbar-thumb {
+            background: #ced0d4;
+        }
+    </style>
 </head>
-<body>
-    <h1>hello</h1>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav
+        class="bg-white shadow w-full h-max px-4 flex flex-row justify-between items-center h-14 fixed top-0 left-0 z-20">
+        <!-- Navbar left -->
+        <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 overflow-hidden">
+                <img src="./images/logo/facebook-logo.png" alt="" class="w-10 h-10 rounded-full">
+            </div>
+            <div
+                class="w-10 h-10 rounded-full lg:w-max bg-gray-100 flex items-center justify-center px-0 lg:px-3 lg:space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" placeholder="Cari di Facebook"
+                    class="hidden lg:block bg-transparent outline-none pr-3 placeholder-gray-500 text-base text-gray-500">
+            </div>
+            <div>
+                <button class="w-10 h-10 rounded-full grid place-items-center bg-gray-100 md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navbar via -->
+        <ul class="hidden md:flex items-center justify-center space-x-2 h-full">
+            <li class="w-19 lg:w-28 pt-1 h-full overflow-hidden border-b-4 border-blue-600">
+                <a href="#" class="w-full h-full rounded-lg grid place-items-center">
+                    <i class='bx bxs-home bx-sm text-blue-600'></i>
+                </a>
+            </li>
+            <li class="w-19 lg:w-28 pt-1 h-full overflow-hidden border-b-4 border-transparent">
+                <a href="#" class="w-full h-full rounded-lg grid place-items-center hover:bg-gray-100">
+                    <i class='bx bx-movie-play bx-sm text-gray-600'></i>
+                </a>
+            </li>
+            <li class="w-19 lg:w-28 pt-1 h-full overflow-hidden border-b-4 border-transparent">
+                <a href="#" class="w-full h-full rounded-lg grid place-items-center hover:bg-gray-100 relative">
+                    <i class='bx bx-cart-alt bx-sm text-gray-600'></i>
+                    <div class="w-4 h-4 bg-red-500 absolute rounded-full grid place-items-center top-1 left-1/2"><span class="block text-white text-xs font-medium">9</span></div>
+                </a>
+            </li>
+            <li class="w-19 lg:w-28 pt-1 h-full overflow-hidden border-b-4 border-transparent">
+                <a href="#" class="w-full h-full rounded-lg grid place-items-center hover:bg-gray-100 relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                    </svg>
+                    <div class="w-4 h-4 bg-red-500 absolute rounded-full grid place-items-center top-1 left-1/2"><span class="block text-white text-xs font-medium">2</span></div>
+                </a>
+            </li>
+            <li class="hidden lg:inline-block w-19 lg:w-28 pt-1 h-full overflow-hidden border-b-4 border-transparent">
+                <a href="#" href="#" class="w-full h-full rounded-lg grid place-items-center hover:bg-gray-100 relative">
+                    <i class='bx bx-layout bx-sm text-gray-600'></i>
+                    <div class="w-max h-max px-1 bg-red-500 absolute rounded-full grid place-items-center top-1 left-1/2"><span class="block text-white text-xs font-medium">9+</span></div>
+                </a>
+            </li>
+            <li class="inline-block lg:hidden w-19 lg:w-28 pt-1 h-full overflow-hidden border-b-4 border-transparent">
+                <a href="#" href="#" class="w-full h-full rounded-lg grid place-items-center hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Navbar rigth -->
+        <ul class="flex flex-row items-center justify-center space-x-2">
+            <li class="hidden xl:block w-max h-max">
+                <a
+                    class="flex items-center justify-center space-x-2 rounded-full hover:bg-gray-200 py-1 pr-3 pl-1 cursor-pointer">
+                    <div class="w-7 h-7 overflow-hidden">
+                        <img src="./images/profil/profil1.jpg" alt="" class="w-7 h-7 rounded-full">
+                    </div>
+                    <h1 class="text-base inline-block uppercase font-medium">m</h1>
+                </a>
+            </li>
+            <li class="hidden lg:block w-max h-max">
+                <button type="button"
+                    class="grid place-items-center p-1 h-10 w-10 bg-gray-200 rounded-full hover:bg-gray-300">
+                    <i class='bx bxs-grid bx-sm'></i>
+                </button>
+            </li>
+            <li class="block lg:hidden w-max h-max">
+                <button type="button"
+                    class="grid place-items-center p-1 h-10 w-10 bg-gray-200 rounded-full hover:bg-gray-300">
+                    <i class='bx bx-plus bx-sm'></i>
+                </button>
+            </li>
+            <li class="block w-max h-mas">
+                <button type="button"
+                    class="grid place-items-center p-1 h-10 w-10 bg-gray-200 rounded-full hover:bg-gray-300">
+                    <i class='bx bxl-messenger bx-sm'></i>
+                </button>
+            </li>
+            <li class="block w-max h-mas">
+                <button type="button"
+                    class="grid place-items-center p-1 h-10 w-10 bg-gray-200 rounded-full hover:bg-gray-300 relative">
+                    <i class='bx bxs-bell bx-sm'></i>
+                    <div class="w-4 h-4 bg-red-500 absolute rounded-full grid place-items-center top-0 right-0"><span class="block text-white text-xs font-medium">2</span></div>
+                </button>
+            </li>
+            <li class="block w-max h-mas">
+                <button type="button"
+                    class="grid place-items-center p-1 h-10 w-10 bg-gray-200 rounded-full hover:bg-gray-300">
+                    <i class='bx bxs-down-arrow'></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="flex xl:justify-center h-screen">
+        <!-- Main menu left -->
+        <div class="w-1/4 bg-transparent overflow-hidden hidden xl:flex fixed top-0 left-0 bottom-0 pt-14">
+            <div class="pl-2 main py-3 overflow-y-auto overflow-x-hidden w-full h-full">
+                <ul class="w-full flex flex-col">
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/profil/profil1.jpg" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">m badrun</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/covid19-informasi.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">COVID-19: pusat
+                                informasi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/teman.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">teman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/group.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">group</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/market.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">marketplace</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/watch.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">watch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/acara.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">acara</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/kenangan.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">kenangan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/tersimpan.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">tersimpan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/halaman.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">halaman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden grid place-content-center rounded-full bg-gray-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">lihat lainya</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="border-b py-1 border-gray-300 w-full ml-2"></div>
+                <ul class="w-full flex flex-col justify-center">
+                    <li>
+                        <div class="flex pl-2 pt-3 pb-2 justify-between items-center">
+                            <span class="inline-block font-medium text-gray-600 text-lg">Pintasan anda</span>
+                            <button type="button" class="text-base text-blue-500 mr-2">Edit</button>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden">
+                                <img src="./images/icon/pintasan.png" alt="" class="w-7 h-7 rounded-full">
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Ujumaki naruto shenju</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="w-full pl-2 mt-2">
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">Privasi</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">.</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">Ketentuan</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">.</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">Iklan</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">.</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">Pilihan Iklan <i
+                            class='bx bxs-right-arrow'></i></a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">.</a><br />
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">Cookie</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">.</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">Lainnya</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">.</a>
+                    <a href="#" class="text-gray-500 text-sm tracking-tight">Facebook &copy; 2021</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main menu content -->
+        <div class="w-full xl:w-1/2 bg-transparent relative pt-14 mx-auto">
+            <div class="w-full relative h-max py-3">
+                <!-- Story -->
+                <div class="w-max h-max mx-auto flex items-center justify-center py-2 relative">
+                    <div class="px-1 group cursor-pointer">
+                        <div
+                            class="bg-white group-hover:bg-gray-100 rounded-lg shadow w-20 sm:w-28 h-40 sm:h-49 overflow-hidden flex flex-col">
+                            <div class="flex-1 overflow-hidden">
+                                <div class="h-full w-full bg-cover bg-center group-hover:transform group-hover:scale-110"
+                                    style="background-image: url(./images/profil/profil1.jpg);">
+                                    <div class="w-full h-full group-hover:bg-black group-hover:bg-opacity-20"></div>
+                                </div>
+                            </div>
+                            <div class="relative flex items-end justify-center h-12">
+                                <div class="py-1">
+                                    <span class="block text-sm font-medium text-gray-700 tracking-tight">Buat
+                                        Cerita</span>
+                                </div>
+                                <div
+                                    class="absolute w-10 h-10 border-4 border-white group-hover:border-gray-100 rounded-full bg-blue-500 grid place-content-center left-1/2 transform -translate-x-1/2 -top-5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-1 group cursor-pointer">
+                        <div
+                            class="bg-white group-hover:bg-gray-100 rounded-lg shadow w-20 sm:w-28 h-40 sm:h-49 overflow-hidden flex flex-col">
+                            <div class="flex-1 relative">
+                                <div class="h-full w-full bg-cover bg-center group-hover:transform group-hover:scale-110 absolute"
+                                    style="background-image: url(./images/story/epribadeh.jpg);">
+                                </div>
+                                <div
+                                    class="w-full h-full absolute bg-black bg-opacity-10 group-hover:bg-black group-hover:bg-opacity-20">
+                                </div>
+                                <div class="flex bg-transparent h-full relative z-10 items-end py-2 px-3">
+                                    <h3 class="text-white font-medium text-sm">Epribadeh Epribadeh</h3>
+                                    <div class="w-9 sm:w-10 h-9 sm:h-10 overflow-hidden absolute left-3 top-3">
+                                        <img src="./images/profil/epribadeh.jpg" alt=""
+                                            class="bg-no-repeat w-9 sm:w-10 h-9 sm:h-10 rounded-full border-4 border-blue-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-1 group cursor-pointer">
+                        <div
+                            class="bg-white group-hover:bg-gray-100 rounded-lg shadow w-20 sm:w-28 h-40 sm:h-49 overflow-hidden flex flex-col">
+                            <div class="flex-1 relative">
+                                <div class="h-full w-full bg-cover bg-center group-hover:transform group-hover:scale-110 absolute"
+                                    style="background-image: url(./images/story/kaka.jpg);">
+                                </div>
+                                <div
+                                    class="w-full h-full absolute bg-black bg-opacity-10 group-hover:bg-black group-hover:bg-opacity-20">
+                                </div>
+                                <div class="flex bg-transparent h-full relative z-10 items-end py-2 px-3">
+                                    <h3 class="text-white font-medium text-sm">Kakaa</h3>
+                                    <div class="w-9 sm:w-10 h-9 sm:h-10 overflow-hidden absolute left-3 top-3">
+                                        <img src="./images/profil/kaka.png" alt=""
+                                            class="bg-no-repeat w-9 sm:w-10 h-9 sm:h-10 rounded-full border-4 border-blue-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-1 group cursor-pointer">
+                        <div
+                            class="bg-white group-hover:bg-gray-100 rounded-lg shadow w-20 sm:w-28 h-40 sm:h-49 overflow-hidden flex flex-col">
+                            <div class="flex-1 relative">
+                                <div class="h-full w-full bg-cover bg-center group-hover:transform group-hover:scale-110 absolute"
+                                    style="background-image: url(./images/story/gitahldamla.jpg);">
+                                </div>
+                                <div
+                                    class="w-full h-full absolute bg-black bg-opacity-10 group-hover:bg-black group-hover:bg-opacity-20">
+                                </div>
+                                <div class="flex bg-transparent h-full relative z-10 items-end py-2 px-3">
+                                    <h3 class="text-white font-medium text-sm">GitahlDamla</h3>
+                                    <div class="w-9 sm:w-10 h-9 sm:h-10 overflow-hidden absolute left-3 top-3">
+                                        <img src="./images/profil/gitahldamla.jpg" alt=""
+                                            class="bg-no-repeat w-9 sm:w-10 h-9 sm:h-10 rounded-full border-4 border-blue-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-1 group cursor-pointer hidden sm:block">
+                        <div
+                            class="bg-white group-hover:bg-gray-100 rounded-lg shadow w-28 h-49 overflow-hidden flex flex-col">
+                            <div class="flex-1 relative">
+                                <div class="h-full w-full bg-cover bg-center group-hover:transform group-hover:scale-110 absolute"
+                                    style="background-image: url(./images/story/anggie-rossana.jpg);">
+                                </div>
+                                <div
+                                    class="w-full h-full absolute bg-black bg-opacity-10 group-hover:bg-black group-hover:bg-opacity-20">
+                                </div>
+                                <div class="flex bg-transparent h-full relative z-10 items-end py-2 px-3">
+                                    <h3 class="text-white font-medium text-sm">Anggie Rossana</h3>
+                                    <div class="w-10 h-10 overflow-hidden absolute left-3 top-3">
+                                        <img src="./images/profil/anggie-rossana.jpg" alt=""
+                                            class="bg-no-repeat w-10 h-10 rounded-full border-4 border-blue-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/2 transform -translate-y-1/2 right-0 sm:-right-5">
+                        <button
+                            class="grid place-items-center h-10 w-10 sm:w-12 sm:h-12 rounded-full bg-white shadow hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:w-4 sm:h-4" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="max-w-lg mx-auto relative">
+                    <div class="bg-white rounded-lg shadow px-4 py-3 flex flex-col space-y-2 w-full h-max mt-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-12 h-12 overflow-hidden">
+                                <img src="./images/profil/profil1.jpg" alt="" class="w-10 h-10 rounded-full">
+                            </div>
+                            <button
+                                class="w-full bg-gray-100 text-left py-2 px-3 rounded-full text-gray-500 font-normal -mt-1 hover:bg-gray-200">Apa
+                                yang Anda pikirkan, M?</button>
+                        </div>
+                        <div class="border-b border-gray-300"></div>
+                        <div class="flex justify-center">
+                            <button
+                                class="flex-1 hover:bg-gray-100 rounded-md py-2 flex items-center justify-center space-x-2">
+                                <i class='bx bxs-video-recording bx-sm' style='color:#ff0000'></i>
+                                <span class="text-base font-medium text-gray-500">Vidio Siaran Langsung</span>
+                            </button>
+                            <button
+                                class="flex-1 hover:bg-gray-100 rounded-md py-2 flex items-center justify-center space-x-2">
+                                <i class='bx bx-images bx-sm' style='color:#08df03'></i>
+                                <span class="text-base font-medium text-gray-500">Foto/Vidio</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white w-full h-max mt-4 rounded-lg py-3 px-4 shadow overflow-hidden">
+                        <div class="flex items-center space-x-4 justify-start py-1">
+                            <button
+                                class="w-max h-10 overflow-hidden flex items-center justify-center space-x-2 rounded-full px-3 ring-2 ring-blue-300 ring-opacity-40 hover:bg-gray-100">
+                                <i class='bx bxs-video-plus bx-sm' style='color:#ac13ef'></i>
+                                <span class="inline-block font-medium text-base text-blue-700">Buat Forum</span>
+                            </button>
+                            <button class="h-10 w-10 relative">
+                                <img src="./images/profil/entry-nuraisayh.jpg" alt="" class="w-10 h-10 rounded-full">
+                                <div
+                                    class="w-3 h-3 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </button>
+                            <button class="h-10 w-10 relative">
+                                <img src="./images/profil/epit.jpg" alt="" class="w-10 h-10 rounded-full">
+                                <div
+                                    class="w-3 h-3 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </button>
+                            <button class="h-10 w-10 relative">
+                                <img src="./images/profil/santika.jpg" alt="" class="w-10 h-10 rounded-full">
+                                <div
+                                    class="w-3 h-3 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </button>
+                            <button class="h-10 w-10 relative">
+                                <img src="./images/profil/muhyi-adiana-r.jpg" alt="" class="w-10 h-10 rounded-full">
+                                <div
+                                    class="w-3 h-3 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-white relative w-full h-max mt-4 shadow rounded-lg overflow-hidden">
+                        <div class="flex flex-col items-center">
+                            <div class="relative flex flex-col py-3 px-4">
+                                <div class="flex items-center space-x-3 justify-between">
+                                    <div class="flex-shrink-0">
+                                        <a href="" class="w-10 h-10 overflow-hidden">
+                                            <img src="./images/profil/ahmad-afiqi.jpg" alt=""
+                                                class="w-10 h-10 rounded-full">
+                                        </a>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex items-center space-x-1 text-gray-900 font-medium">
+                                            <a href="" class="inline-block">Ahmad Afiqi</a>
+                                            <i class='bx bxs-right-arrow'></i>
+                                            <a href="" class="inline-block">Indonesia Freelancers</a>
+                                        </div>
+                                        <div class="flex items-center space-x-1 text-sm text-gray-500">
+                                            <a href="" class="inline-block">12 Jam</a>
+                                            <span class="inline-block">.</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <button class="w-9 h-9 hover:bg-gray-100 rounded-full grid place-items-center">
+                                        <i class='bx bx-dots-horizontal-rounded bx-sm'></i>
+                                    </button>
+                                </div>
+                                <div class="w-full h-max pt-1">
+                                    <span class="block text-gray-900 tracking-tight leading-5">Halo para dollar hunter
+                                        appen, kalau etnis Indonesia lebih tepat pilih yang
+                                        mana ya? Share pengalaman dong..</span>
+                                </div>
+                            </div>
+                            <div class="w-full h-max relative">
+                                <img src="./images/post-ahmad-afiqi.jpg" alt="">
+                            </div>
+                            <div class="flex flex-col relative bg-transparent w-full h-full py-3 px-4">
+                                <div class="flex flex-col w-full h-max">
+                                    <div class="flex justify-between items-center pb-2">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-5 h-5 bg-blue-500 rounded-full grid place-items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-3 w-3 text-white transform -rotate-12" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path
+                                                        d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                                </svg>
+                                            </div>
+                                            <a href="" class="inline-block text-gray-600 font-normal text-base">21</a>
+                                        </div>
+                                        <div>
+                                            <a href="" class="text-gray-600 font-normal hover:underline">43 Kometar</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between relative py-1 border-t border-b border-gray-300">
+                                        <button
+                                            class="flex items-center space-x-2 flex-1 w-full hover:bg-gray-100 justify-center py-1 rounded text-gray-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                            </svg>
+                                            <span class="inline-block font-medium">Suka</span>
+                                        </button>
+                                        <button
+                                            class="flex items-center space-x-2 flex-1 w-full hover:bg-gray-100 justify-center py-1 rounded text-gray-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                            </svg>
+                                            <span class="inline-block font-medium">Komentari</span>
+                                        </button>
+                                    </div>
+                                    <div class="flex py-1 justify-end items-center">
+                                        <button class="flex items-center space-x-1 text-gray-600 text-base">
+                                            <span class="inline-block font-medium">Komentar Terpopuler</span>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd" />
+                                                </svg></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="w-full h-max relative mt-1 flex flex-col space-y-2">
+                                    <div class="flex items-start space-x-2">
+                                        <div class="h-8 w-8 relative flex-none cursor-pointer">
+                                            <img src="./images/profil/profil1.jpg" alt="" class="h-8 w-8 rounded-full">
+                                            <div
+                                                class="w-3 h-3 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col justify-center w-full">
+                                            <div
+                                                class="flex items-center bg-gray-100 w-full relative rounded-full px-3 py-2">
+                                                <input type="text" placeholder="Tulis komentar..."
+                                                    class="bg-transparent focus:outline-none placeholder-gray-700 w-full pr-32" />
+                                                <div
+                                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 flex items-center">
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <span class="inline-block text-gray-900 text-xs tracking-tight ">Tekan Enter
+                                                untuk
+                                                mengirim.</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start justify-start space-x-2 group">
+                                        <div class="h-8 w-8 overflow-hidden flex-none cursor-pointer">
+                                            <img src="./images/profil/ahmad-adityas-setya.jpg" alt=""
+                                                class="w-8 h-8 rounded-full">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <div
+                                                class="flex items-start flex-col relative bg-gray-100 rounded-full py-2 px-3">
+                                                <a href="#" class="text-sm font-medium text-black hover:underline">Ahmad
+                                                    Adityas Setiya</a>
+                                                <span class="block -mt-1 text-base text-black">Other</span>
+                                                <div
+                                                    class="absolute -right-5 bottom-1 bg-white shadow flex items-center space-x-1 rounded-full px-1 cursor-pointer">
+                                                    <div
+                                                        class="w-4 h-4 rounded-full bg-blue-500 grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-3 w-3 text-white" viewBox="0 0 20 20"
+                                                            fill="currentColor">
+                                                            <path
+                                                                d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="inline-block text-sm">2</span>
+                                                </div>
+                                                <div class="absolute hidden group-hover:grid top-1/2 transform -translate-y-1/2 -right-1/2 -translate-x-1/2 w-8 h-8 hover:bg-gray-100 rounded-full place-items-center cursor-pointer">
+                                                    <i class='bx bx-dots-horizontal-rounded bx-sm text-gray-600'></i>
+                                                </div>
+                                            </div>
+                                            <div class="text-xs ml-4">
+                                                <a href="" class="inline-block font-bold hover:underline">Suka</a>
+                                                <a href="" class="inline-block">.</a>
+                                                <a href="" class="inline-block font-bold hover:underline">Balas</a>
+                                                <a href="" class="inline-block">.</a>
+                                                <a href="" class="inline-block text-gray-600 hover:underline">12 Jam</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between w-full mt-2">
+                                    <div>
+                                        <a href="" class="inline-block hover:underline">Lihat Komentar Lain</a>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">1 Dari 25</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white relative w-full h-max mt-4 shadow rounded-lg overflow-hidden">
+                        <div class="flex flex-col items-center">
+                            <div class="relative flex flex-col py-3 px-4">
+                                <div class="flex items-center space-x-3 justify-between">
+                                    <div class="flex-shrink-0">
+                                        <a href="" class="w-10 h-10 overflow-hidden">
+                                            <img src="./images/profil/yuda-darmawan.jpg" alt=""
+                                                class="w-10 h-10 rounded-full">
+                                        </a>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex items-center space-x-1 text-gray-900 font-medium">
+                                            <a href="" class="inline-block">Yuda Darmawan</a>
+                                            <i class='bx bxs-right-arrow'></i>
+                                            <a href="" class="inline-block">Laravel Indonesia</a>
+                                        </div>
+                                        <div class="flex items-center space-x-1 text-sm text-gray-500">
+                                            <a href="" class="inline-block">11 Jam</a>
+                                            <span class="inline-block">.</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <button class="w-9 h-9 hover:bg-gray-100 rounded-full grid place-items-center">
+                                        <i class='bx bx-dots-horizontal-rounded bx-sm'></i>
+                                    </button>
+                                </div>
+                                <div class="w-full h-max pt-1">
+                                    <span class="block text-gray-900 tracking-tight leading-5">Malam Kawan-Kawan<span>
+                                    <span class="block text-gray-900 tracking-tight leading-5 mt-3">Mungkin ada yg bisa bantu
+                                        Cara manggil model di view blade tanpa melalui controller gmna ya?</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col relative bg-transparent w-full h-full py-3 px-4">
+                                <div class="flex flex-col w-full h-max">
+                                    <div class="flex justify-between items-center pb-2">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-5 h-5 bg-blue-500 rounded-full grid place-items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-3 w-3 text-white transform -rotate-12" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path
+                                                        d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                                </svg>
+                                            </div>
+                                            <a href="" class="inline-block text-gray-600 font-normal text-base">6</a>
+                                        </div>
+                                        <div>
+                                            <a href="" class="text-gray-600 font-normal hover:underline">17 Kometar</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between relative py-1 border-t border-b border-gray-300">
+                                        <button
+                                            class="flex items-center space-x-2 flex-1 w-full hover:bg-gray-100 justify-center py-1 rounded text-gray-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                            </svg>
+                                            <span class="inline-block font-medium">Suka</span>
+                                        </button>
+                                        <button
+                                            class="flex items-center space-x-2 flex-1 w-full hover:bg-gray-100 justify-center py-1 rounded text-gray-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                            </svg>
+                                            <span class="inline-block font-medium">Komentari</span>
+                                        </button>
+                                    </div>
+                                    <div class="flex py-2 justify-between items-center">
+                                        <button class="text-gray-600 text-base inline-block font-medium hover:underline">
+                                            Lihat 7 Komentar Lain
+                                        </button>
+                                        <button class="flex items-center space-x-1 text-gray-600 text-base">
+                                            <span class="inline-block font-medium">Semua Terpopuler</span>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd" />
+                                                </svg></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="w-full h-max relative mt-1 flex flex-col space-y-2">
+                                    <div class="flex items-start justify-start space-x-2 group">
+                                        <div class="h-8 w-8 overflow-hidden flex-none cursor-pointer">
+                                            <img src="./images/profil/rafi.jpg" alt=""
+                                                class="w-8 h-8 rounded-full">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <div
+                                                class="flex items-start flex-col relative bg-gray-100 rounded-full py-2 px-3">
+                                                <a href="#" class="text-sm font-medium text-black hover:underline">Rafi'e</a>
+                                                <span class="block -mt-1 text-base text-black">Pakai @inject aja gan</span>
+                                                <div class="absolute hidden group-hover:grid top-1/2 transform -translate-y-1/2 -right-1/2 -translate-x-1/2 w-8 h-8 hover:bg-gray-100 rounded-full place-items-center cursor-pointer">
+                                                    <i class='bx bx-dots-horizontal-rounded bx-sm text-gray-600'></i>
+                                                </div>
+                                            </div>
+                                            <div class="text-xs ml-4">
+                                                <a href="" class="inline-block font-bold hover:underline">Suka</a>
+                                                <a href="" class="inline-block">.</a>
+                                                <a href="" class="inline-block font-bold hover:underline">Balas</a>
+                                                <a href="" class="inline-block">.</a>
+                                                <a href="" class="inline-block text-gray-600 hover:underline">12 Jam</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-2">
+                                        <div class="h-8 w-8 relative flex-none cursor-pointer">
+                                            <img src="./images/profil/profil1.jpg" alt="" class="h-8 w-8 rounded-full">
+                                            <div
+                                                class="w-3 h-3 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col justify-center w-full">
+                                            <div
+                                                class="flex items-center bg-gray-100 w-full relative rounded-full px-3 py-2">
+                                                <input type="text" placeholder="Tulis komentar..."
+                                                    class="bg-transparent focus:outline-none placeholder-gray-700 w-full pr-32" />
+                                                <div
+                                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 flex items-center">
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        class="w-8 h-8 hover:bg-gray-200 rounded-full grid place-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <span class="inline-block text-gray-900 text-xs tracking-tight ">Tekan Enter
+                                                untuk
+                                                mengirim.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Main menu rigth -->
+        <div
+            class="w-1/2 xl:w-1/4 bg-transparent overflow-hidden hidden lg:flex justify-center xl:fixed top-0 right-0 bottom-0 pt-14">
+            <div class="pl-2 main overflow-y-auto overflow-x-hidden py-3 w-full h-full">
+                <ul class="flex flex-col">
+                    <li>
+                        <span class="text-lg font-medium ml-2 text-gray-500 block mb-1">Bersponsor</span>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-3 pl-2 pr-8 hover:bg-gray-200 rounded-l-lg h-max py-2 transition-all ease-out duration-150">
+                            <div class="w-28 flex-none overflow-hidden">
+                                <img src="./images/oppoa9.jpg" alt="" class="w-28 rounded">
+                            </div>
+                            <div>
+                                <span class="text-base font-medium text-gray-700 leading-5 block">Pilihan tepat belanja
+                                    lebih hemat!</span>
+                                <span class="text-sm text-gray-500">mall.akulaku.com</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-3 pl-2 pr-8 hover:bg-gray-200 rounded-l-lg h-max py-2 transition-all ease-out duration-150">
+                            <div class="w-28 flex-none overflow-hidden">
+                                <img src="./images/grab-express.jpg" alt="" class="w-28 rounded">
+                            </div>
+                            <div>
+                                <span class="text-base font-medium text-gray-700 leading-5 block">No drama salah alamat
+                                    & Diskon</span>
+                                <span class="text-sm text-gray-500">www.grab.com</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="border-b py-1 border-gray-300 w-full ml-2"></div>
+                <ul class="flex flex-col mt-1">
+                    <li>
+                        <div class="ml-2 flex items-center justify-between py-1">
+                            <span>Kontak</span>
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    class="w-8 h-8 rounded-full hover:bg-gray-200 grid place-content-center cursor-pointer">
+                                    <i class='bx bxs-video-plus'></i>
+                                </div>
+                                <div
+                                    class="w-8 h-8 rounded-full hover:bg-gray-200 grid place-content-center cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="w-8 h-8 rounded-full hover:bg-gray-200 grid place-content-center cursor-pointer">
+                                    <i class='bx bx-dots-horizontal-rounded'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/santika.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Santika</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/muhyi-adiana-r.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Muhyi Adiana R</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/entry-nuraisayh.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Entry Nuraisayh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/darz-si-chao.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Darz Si Chao</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/anita.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Anita</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/miftah.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Miftah</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/freya-altea.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Freya Althea</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/mella-feraj.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Mella Feraj</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/epit.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Epit</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 relative">
+                                <img src="./images/profil/elis-sumarni.jpg" alt="" class="w-7 h-7 rounded-full">
+                                <div
+                                    class="w-2 h-2 border border-white absolute bottom-0 right-0 bg-green-500 rounded-full">
+                                </div>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Elis Sumarni </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="border-b py-1 border-gray-300 w-full ml-2"></div>
+                <ul class="flex flex-col my-2">
+                    <li>
+                        <span class="text-lg font-medium ml-2 text-gray-500 block mb-1">Percakapan Grup</span>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex flex-row items-center justify-start space-x-2 px-2 hover:bg-gray-200 rounded-l-lg h-11 py-1 transition-all ease-out duration-150">
+                            <div class="w-7 h-7 overflow-hidden grid place-content-center rounded-full bg-gray-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                            </div>
+                            <span class="text-base font-medium capitalize text-gray-700">Buat Grup Baru</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>
